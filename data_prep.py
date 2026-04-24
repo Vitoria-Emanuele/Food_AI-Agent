@@ -23,8 +23,8 @@ def preprocessar_dados(df):
     print("Iniciando o pré-processamento:")
     
     # remove linhas duplicadas
-    df_limpo = df.dropDuplicates()
-    
+    df_limpo = df.dropDuplicates(["Dish Name"])
+       
     # tratar valores nulos preenchendo com "desconhecido" (para strings)
     df_limpo = df_limpo.fillna("desconhecido")
     
@@ -55,3 +55,16 @@ if __name__ == "__main__":
     df_processado = preprocessar_dados(df_bruto)
     
     df_processado.select("Dish Name", "text_for_embedding").show(5, truncate=False)
+
+    print("Exportando os dados processados...")
+    
+    # trazemos os dados do spark para a memoria nativa do python em formato de dicionario
+    dados_lista = [row.asDict() for row in df_processado.select("Dish Name", "Typical Price (USD)", "text_for_embedding").collect()]
+    
+    # salvando o arquivo usando o python puro, ignorando o limitador do PySpark
+    import json
+    with open("dados_limpos.json", "w", encoding="utf-8") as f:
+        for item in dados_lista:
+            f.write(json.dumps(item) + "\n")
+            
+    print("Arquivo 'dados_limpos.json' salvo com sucesso!")
