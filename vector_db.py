@@ -57,13 +57,3 @@ class DocumentVectorSearch:
             print(f"  Resumo: {prato['text_for_embedding'][:80]}...")
         
         return resultados
-
-if __name__ == "__main__":
-
-    buscador = DocumentVectorSearch()
-    
-    buscador.load_documents("dados_limpos.json")
-    buscador.process_documents()
-    
-    # Teste de semantica : o cliente pede "uma comida apimentada mexicana com tortilla e queijo"
-    buscador.query("I want a spicy Mexican food with cheese and tortilla")
