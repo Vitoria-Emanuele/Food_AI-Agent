@@ -1,8 +1,6 @@
 --------------------------------------------------------------------------------
 # AI Agent - Sistema de Recomendação Semantica de Pratos
-<p align="center">
-    <img src="assets/AIAgent-RecomendaodePratos-SwaggerUI-GoogleChrome2026-08-2920-29-38-ezgif.com-video-to-gif-converter.gif>
-</p>
+
 
 ## Sobre o Projeto
 Este é um projeto pratico de um Agente autônomo de IA desenhado para atuar no primeiro passo de um funil de recomendação (Busca Semântica/Retrieval). 
